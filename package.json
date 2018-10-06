@@ -13,6 +13,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "server": "json-server --watch api/db.json --port 5000",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
