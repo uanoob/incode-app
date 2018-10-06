@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getClients } from '../store/actions';
+import { getClients, getClientById } from '../store/actions';
 import ClientItem from '../layout/ClientItem';
 
 class ClientsList extends Component {
@@ -11,12 +11,13 @@ class ClientsList extends Component {
 
   onClientItemHandler = e => {
     console.log(e.target.id);
+    this.props.getClientById(this.props.clients, e.target.id);
   };
 
   render() {
     const { clients } = this.props;
     return (
-      <div className="ui items">
+      <div className="ui items segment">
         {clients.map(client => (
           <ClientItem
             key={client.id}
@@ -35,6 +36,7 @@ class ClientsList extends Component {
 
 ClientsList.propTypes = {
   getClients: PropTypes.func.isRequired,
+  getClientById: PropTypes.func.isRequired,
   clients: PropTypes.array.isRequired,
 };
 
@@ -42,7 +44,7 @@ const mapStateToProps = state => ({
   clients: state.clients.data,
 });
 
-const mapDispatchToProps = { getClients };
+const mapDispatchToProps = { getClients, getClientById };
 
 export default connect(
   mapStateToProps,

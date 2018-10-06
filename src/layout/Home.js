@@ -1,12 +1,16 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import ClientsList from '../container/ClientsList';
+import ClientDetail from '../container/ClientDetail';
 
 const Home = () => {
   return (
-    <div className="ui two column grid container">
-      <div className="column">
+    <div className="ui column grid container">
+      <div className="six wide column">
         <ClientsList />
+      </div>
+      <div className=" ten wide column">
+        <ClientDetail />
       </div>
     </div>
   );
