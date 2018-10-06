@@ -1,24 +1,26 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getClients } from '../store/actions';
 
-export default class ClientsList extends Component {
-
+class ClientsList extends Component {
+  componentDidMount() {
+    this.props.getClients();
+  }
   render() {
-    return (
-      <div>
-        ClientsList
-      </div>
-    )
+    return <div>ClientsList</div>;
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+ClientsList.propTypes = {
+  getClients: PropTypes.func.isRequired,
+};
 
-const mapDispatchToProps = {
-  
-}
+const mapStateToProps = state => ({});
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ClientsList)
+const mapDispatchToProps = { getClients };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ClientsList);
