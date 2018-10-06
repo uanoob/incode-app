@@ -4,8 +4,10 @@ import ClientsList from '../container/ClientsList';
 
 const Home = () => {
   return (
-    <div>
-      <ClientsList />
+    <div className="ui two column grid container">
+      <div className="column">
+        <ClientsList />
+      </div>
     </div>
   );
 };
