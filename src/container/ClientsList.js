@@ -21,8 +21,8 @@ class ClientsList extends Component {
       <div className="ui items segment">
         {show.map(client => (
           <ClientItem
-            key={client.id}
-            id={client.id}
+            key={client.contact.phone}
+            id={client.contact.phone}
             avatar={client.general.avatar}
             firstName={client.general.firstName}
             lastName={client.general.lastName}
