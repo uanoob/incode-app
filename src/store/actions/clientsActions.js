@@ -36,7 +36,7 @@ export const searchClients = (clients, regexp) => {
       }
     }
   });
-  console.log(result);
+  // console.log(result);
   return {
     type: SEARCH_CLIENTS,
     payload: result,
