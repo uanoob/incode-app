@@ -1,1 +1,1 @@
-export { getClients, getClientById } from './clientsActions';
+export { getClients, getClientById, searchClients } from './clientsActions';

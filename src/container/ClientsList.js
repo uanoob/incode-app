@@ -10,15 +10,16 @@ class ClientsList extends Component {
   }
 
   onClientItemHandler = e => {
-    console.log(e.target.id);
     this.props.getClientById(this.props.clients, e.target.id);
   };
 
   render() {
-    const { clients } = this.props;
+    const { clients, search } = this.props;
+    let show;
+    search.length > 0 ? (show = search) : (show = clients);
     return (
       <div className="ui items segment">
-        {clients.map(client => (
+        {show.map(client => (
           <ClientItem
             key={client.id}
             id={client.id}
@@ -38,10 +39,12 @@ ClientsList.propTypes = {
   getClients: PropTypes.func.isRequired,
   getClientById: PropTypes.func.isRequired,
   clients: PropTypes.array.isRequired,
+  search: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
   clients: state.clients.data,
+  search: state.clients.search,
 });
 
 const mapDispatchToProps = { getClients, getClientById };

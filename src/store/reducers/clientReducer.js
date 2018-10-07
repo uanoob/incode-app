@@ -1,8 +1,13 @@
-import { GET_CLIENTS, GET_CLIENT_BY_ID } from '../actions/types';
+import {
+  GET_CLIENTS,
+  GET_CLIENT_BY_ID,
+  SEARCH_CLIENTS,
+} from '../actions/types';
 
 const initialState = {
   data: [],
   client: null,
+  search: [],
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +16,8 @@ export default function(state = initialState, action) {
       return { ...state, data: action.payload };
     case GET_CLIENT_BY_ID:
       return { ...state, client: action.payload };
+    case SEARCH_CLIENTS:
+      return { ...state, search: action.payload };
     default:
       return state;
   }
