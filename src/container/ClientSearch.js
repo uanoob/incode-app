@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { searchClients } from '../store/actions';
+import { searchClients, isFiltered } from '../store/actions';
 
 class ClientSearch extends Component {
   searchInputHandler = e => {
-    // console.log(e.target.value);
-    const { data, searchClients } = this.props;
+    const { data, searchClients, isFiltered } = this.props;
     searchClients(data, e.target.value);
+    isFiltered(true);
   };
 
   render() {
@@ -27,13 +27,14 @@ class ClientSearch extends Component {
 
 ClientSearch.propTypes = {
   searchClients: PropTypes.func.isRequired,
+  isFiltered: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   data: state.clients.data,
 });
 
-const mapDispatchToProps = { searchClients };
+const mapDispatchToProps = { searchClients, isFiltered };
 
 export default connect(
   mapStateToProps,

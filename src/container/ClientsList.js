@@ -14,9 +14,10 @@ class ClientsList extends Component {
   };
 
   render() {
-    const { clients, search } = this.props;
+    const { clients, search, filter } = this.props;
     let show;
-    search.length > 0 ? (show = search) : (show = clients);
+    filter ? (show = search) : (show = clients);
+
     return (
       <div className="ui items segment">
         {show.map(client => (
@@ -40,11 +41,13 @@ ClientsList.propTypes = {
   getClientById: PropTypes.func.isRequired,
   clients: PropTypes.array.isRequired,
   search: PropTypes.array.isRequired,
+  filter: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   clients: state.clients.data,
   search: state.clients.search,
+  filter: state.clients.filter,
 });
 
 const mapDispatchToProps = { getClients, getClientById };

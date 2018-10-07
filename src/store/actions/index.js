@@ -1,1 +1,6 @@
-export { getClients, getClientById, searchClients } from './clientsActions';
+export {
+  getClients,
+  getClientById,
+  searchClients,
+  isFiltered,
+} from './clientsActions';

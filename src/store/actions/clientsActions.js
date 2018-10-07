@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { GET_CLIENTS, GET_CLIENT_BY_ID, SEARCH_CLIENTS } from './types';
+import {
+  GET_CLIENTS,
+  GET_CLIENT_BY_ID,
+  SEARCH_CLIENTS,
+  IS_FILTERED,
+} from './types';
 
 const localApi = axios.create({
   baseURL: 'http://localhost:5000',
@@ -31,7 +36,7 @@ export const searchClients = (clients, regexp) => {
       }
     }
   });
-  // console.log(result);
+  console.log(result);
   return {
     type: SEARCH_CLIENTS,
     payload: result,
@@ -45,4 +50,11 @@ const filterClients = (object, regexp) => {
       return true;
     }
   }
+};
+
+export const isFiltered = bool => {
+  return {
+    type: IS_FILTERED,
+    payload: bool,
+  };
 };

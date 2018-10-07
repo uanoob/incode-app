@@ -2,12 +2,14 @@ import {
   GET_CLIENTS,
   GET_CLIENT_BY_ID,
   SEARCH_CLIENTS,
+  IS_FILTERED,
 } from '../actions/types';
 
 const initialState = {
   data: [],
   client: null,
   search: [],
+  filter: false,
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +20,8 @@ export default function(state = initialState, action) {
       return { ...state, client: action.payload };
     case SEARCH_CLIENTS:
       return { ...state, search: action.payload };
+    case IS_FILTERED:
+      return { ...state, filter: action.payload };
     default:
       return state;
   }
