@@ -6,17 +6,18 @@ import ClientItem from '../layout/ClientItem';
 
 class ClientsList extends Component {
   componentDidMount() {
-    this.props.getClients();
+    const { getClientsConnect } = this.props;
+    getClientsConnect();
   }
 
-  onClientItemHandler = e => {
-    this.props.getClientById(this.props.clients, e.target.id);
+  onClientItemHandler = (e) => {
+    const { getClientByIdConnect, clients } = this.props;
+    getClientByIdConnect(clients, e.target.id);
   };
 
   render() {
     const { clients, search, filter } = this.props;
-    let show;
-    filter ? (show = search) : (show = clients);
+    const show = filter ? search : clients;
 
     return (
       <div className="ui items segment">
@@ -36,11 +37,64 @@ class ClientsList extends Component {
   }
 }
 
+ClientsList.defaultProps = {
+  clients: [],
+  search: [],
+};
+
 ClientsList.propTypes = {
-  getClients: PropTypes.func.isRequired,
-  getClientById: PropTypes.func.isRequired,
-  clients: PropTypes.array.isRequired,
-  search: PropTypes.array.isRequired,
+  clients: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.shape({
+        general: PropTypes.shape({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
+          avatar: PropTypes.string.isRequired,
+        }),
+        job: PropTypes.shape({
+          company: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+        }),
+        contact: PropTypes.shape({
+          email: PropTypes.string.isRequired,
+          phone: PropTypes.string.isRequired,
+        }),
+        address: PropTypes.shape({
+          street: PropTypes.string.isRequired,
+          city: PropTypes.string.isRequired,
+          zipcode: PropTypes.string.isRequired,
+          country: PropTypes.string.isRequired,
+        }),
+      }),
+    ),
+  ),
+  search: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.shape({
+        general: PropTypes.shape({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
+          avatar: PropTypes.string.isRequired,
+        }),
+        job: PropTypes.shape({
+          company: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+        }),
+        contact: PropTypes.shape({
+          email: PropTypes.string.isRequired,
+          phone: PropTypes.string.isRequired,
+        }),
+        address: PropTypes.shape({
+          street: PropTypes.string.isRequired,
+          city: PropTypes.string.isRequired,
+          zipcode: PropTypes.string.isRequired,
+          country: PropTypes.string.isRequired,
+        }),
+      }),
+    ),
+  ),
+  getClientsConnect: PropTypes.func.isRequired,
+  getClientByIdConnect: PropTypes.func.isRequired,
   filter: PropTypes.bool.isRequired,
 };
 
@@ -50,7 +104,10 @@ const mapStateToProps = state => ({
   filter: state.clients.filter,
 });
 
-const mapDispatchToProps = { getClients, getClientById };
+const mapDispatchToProps = {
+  getClientsConnect: getClients,
+  getClientByIdConnect: getClientById,
+};
 
 export default connect(
   mapStateToProps,
