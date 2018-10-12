@@ -1,23 +1,18 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import ClientSearch from '../container/ClientSearch';
 import ClientsList from '../container/ClientsList';
 import ClientDetail from '../container/ClientDetail';
 
-const Home = () => {
-  return (
-    <div className="ui column grid container">
-      <div className="eight wide column">
-        <ClientSearch />
-        <ClientsList />
-      </div>
-      <div className=" eight wide column">
-        <ClientDetail />
-      </div>
+const Home = () => (
+  <div className="ui column grid container">
+    <div className="eight wide column">
+      <ClientSearch />
+      <ClientsList />
     </div>
-  );
-};
-
-Home.propTypes = {};
+    <div className=" eight wide column">
+      <ClientDetail />
+    </div>
+  </div>
+);
 
 export default Home;
