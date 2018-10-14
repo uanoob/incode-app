@@ -7,13 +7,10 @@ import {
   IS_FILTERED,
 } from './types';
 
-const localApi = axios.create({
-  baseURL: 'http://localhost:5000',
-  timeout: 1000,
-});
-
 export const getClients = () => async dispatch => {
-  const response = await localApi.get('/data');
+  const response = await axios.get(
+    'https://incode-app.firebaseio.com/data.json',
+  );
   dispatch({
     type: GET_CLIENTS,
     payload: response.data,
