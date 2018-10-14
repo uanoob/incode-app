@@ -20,24 +20,24 @@ const ClientDetailItem = ({
     </div>
     <div className="content">
       <h2 className="header">
-        {firstName}
+        {firstName}&nbsp;
         {lastName}
       </h2>
       <p className="meta">{title}</p>
       <p className="meta">{company}</p>
       <p className="description">
-        Email:
+        Email:&nbsp;
         {email}
       </p>
       <p className="description">
-        Phone:
+        Phone:&nbsp;
         {phone}
       </p>
       <p className="description">
-        Address:
-        {street}
-        {city}
-        {zipcode}
+        Address:&nbsp;
+        {street}&nbsp;
+        {city}&nbsp;
+        {zipcode}&nbsp;
         {country}
       </p>
     </div>

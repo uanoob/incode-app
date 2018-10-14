@@ -18,7 +18,7 @@ const ClientItem = ({
     </div>
     <div className="content">
       <h2 className="header">
-        {firstName}
+        {firstName}&nbsp;
         {lastName}
       </h2>
       <p className="description">{title}</p>
